@@ -1,5 +1,5 @@
 # GoWeb
-A simple HTTP responder, written in Go.</br>
+A simple HTTP responder, written in Go. For a detailed description read [https://www.digitalocean.com/community/tutorials/how-to-make-an-http-server-in-go](https://www.digitalocean.com/community/tutorials/how-to-make-an-http-server-in-go).</br>
 </br>
 [Automated builds](https://docs.docker.com/docker-hub/builds/) are set up in Docker Hub for AMD64/x86_64 architecture. To pull/run simply issue the following command:</br>
 `docker run -d -p 8080:8080 carmelo0x99/goweb:latest`
