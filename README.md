@@ -31,8 +31,54 @@ $ docker run \
 
 - test
 ```
-$ curl http://<docker_engine_ip_address>:9090/Hello%20there\!
+$ curl http://<private_subnet_ip_address>:9090/Hello%20there\!
+This is <hostname> running on linux/amd64 saying: Hello there!
+```
+**NOTE**: the published port (`9090`) is different from the listening port (`8080`)
+
+### Run with Docker Swarm
+- run
+```
+$ docker service create \
+  --replicas 3 \
+  --name goweb \
+  --publish published=8888,target=8080 \
+  <repository>/<name>:<tag>
+```
+
+- test
+```
+$ curl http://<private_subnet_ip_address>:8888/Hello%20there\!
 This is <hostname> running on linux/amd64 saying: Hello there!
 ```
 
-See also: [https://www.digitalocean.com/community/tutorials/how-to-make-an-http-server-in-go](https://www.digitalocean.com/community/tutorials/how-to-make-an-http-server-in-go).
+#### To scale up/down
+```
+$ docker service scale goweb=5
+```
+**NOTE**: `3` and `5` above are only examples
+
+### Add a load balancer (`nginx`)
+Take a look and edit as appropriate file `data/loadbalancer/default.conf`. The file defines:</br>
+- `backend`: the servers (private subnet IP addresses) and ports on which the service is offered
+- `listen`: the port on which the LB operates (within the container)
+
+- run
+```
+docker run \
+  --detach \
+  --name loadbalancer \
+  --mount type=bind,source=./data/loadbalancer,target=/etc/nginx/conf.d \
+  --publish published=9090,target=9999 \
+  nginx
+```
+
+- test
+```
+$ curl http://<private_subnet_ip_address>:9090/Hello%20there\!
+This is <hostname> running on linux/amd64 saying: Hello there!
+```
+
+----
+
+See also: [https://www.digitalocean.com/community/tutorials/how-to-make-an-http-server-in-go](https://www.digitalocean.com/community/tutorials/how-to-make-an-http-server-in-go)
