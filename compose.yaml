@@ -1,6 +1,3 @@
----
-version: "3"
-
 services:
   responder:
     image: carmelo0x99/goweb:1.0
