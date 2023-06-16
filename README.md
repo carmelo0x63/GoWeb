@@ -66,6 +66,8 @@ $ docker service scale goweb=5
 ```
 **NOTE**: the numbers `3` and `5` above are only examples
 
+----
+
 ### Run as a `Stack`
 ```
 $ docker stack deploy \
