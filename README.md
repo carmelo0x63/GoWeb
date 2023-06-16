@@ -7,6 +7,8 @@ The source code describes two functions:
 2. `sayHello()`: returns a message saying `This is <hostname> running on <OS/arch> saying: <received_message>`
 
 ### Local test
+<img src="assets/images/stand-alone.png">
+
 Run as `go run goweb.go`. From a different terminal tab, run the following:
 ```
 $ curl http://127.0.0.1:8080/Hello%20there\!
@@ -16,7 +18,7 @@ This is <hostname> running on linux/amd64 saying: Hello there!
 ----
 
 ### Build and run as container
-<img src="assets/images/stand-alone.png">
+<img src="assets/images/docker-basic.png">
 
 - build
 ```
@@ -41,6 +43,8 @@ This is <hostname> running on linux/amd64 saying: Hello there!
 **NOTE**: the published port (`9090`) is different from the listening port (`8080`)
 
 ### Run with Docker Swarm
+<img src="assets/images/docker-swarm.png">
+
 - run
 ```
 $ docker service create \
@@ -65,6 +69,8 @@ $ docker service scale goweb=5
 ----
 
 ### Add a load balancer (`nginx`)
+<img src="assets/images/docker+lb.png">
+
 Take a look and edit as appropriate file `data/loadbalancer/default.conf`. The file defines:</br>
 - `backend`: the servers (private subnet IP addresses) and ports on which the service is offered
 - `listen`: the port on which the LB operates (within the container)
