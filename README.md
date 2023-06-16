@@ -13,6 +13,8 @@ $ curl http://127.0.0.1:8080/Hello%20there\!
 This is <hostname> running on linux/amd64 saying: Hello there!
 ```
 
+----
+
 ### Build and run as container
 - build
 ```
@@ -56,7 +58,9 @@ This is <hostname> running on linux/amd64 saying: Hello there!
 ```
 $ docker service scale goweb=5
 ```
-**NOTE**: `3` and `5` above are only examples
+**NOTE**: the numbers `3` and `5` above are only examples
+
+----
 
 ### Add a load balancer (`nginx`)
 Take a look and edit as appropriate file `data/loadbalancer/default.conf`. The file defines:</br>
