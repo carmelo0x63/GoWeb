@@ -1,7 +1,6 @@
 services:
   responder:
     image: carmelo0x99/goweb:1.0
-    build: .
     ports:
       - "8888:8080"
     deploy:

@@ -71,7 +71,7 @@ $ docker service scale goweb=5
 ### Run as a `Stack`
 ```
 $ docker stack deploy \
-  --compose-file docker-compose.yaml
+  --compose-file compose.yaml
   goweb
 ```
 **NOTE**: what was before stated through the command line is now described in the `docker-compose.yaml` file
