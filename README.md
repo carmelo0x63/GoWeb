@@ -84,7 +84,7 @@ $ docker stack deploy \
 Take a look and edit as appropriate file `data/loadbalancer/default.conf`. The file defines:</br>
 - `backend`: the servers (private subnet IP addresses) and ports on which the service is offered
 - `listen`: the port on which the LB operates (within the container)
-
+</br>
 - run
 ```
 docker run \
