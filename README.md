@@ -17,6 +17,7 @@ This is <hostname> running on linux/amd64 saying: Hello there!
 
 ### Build and run as container
 <img src="assets/images/stand-alone.png">
+
 - build
 ```
 $ docker buildx build --tag <repository>/<name>:<tag> .
