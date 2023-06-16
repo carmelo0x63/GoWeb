@@ -66,6 +66,14 @@ $ docker service scale goweb=5
 ```
 **NOTE**: the numbers `3` and `5` above are only examples
 
+### Run as a `Stack`
+```
+$ docker stack deploy \
+  --compose-file docker-compose.yaml
+  goweb
+```
+**NOTE**: what was before stated through the command line is now described in the `docker-compose.yaml` file
+
 ----
 
 ### Add a load balancer (`nginx`)
