@@ -1,8 +1,10 @@
 services:
-  responder:
+  http:
     image: carmelo0x99/goweb:1.0
     ports:
-      - "8888:8080"
+      - target: 8888
+        published: 8080
+        protocol: tcp
     deploy:
       mode: replicated
       replicas: 3

@@ -1,0 +1,17 @@
+services:
+  lb:
+    image: nginx:stable-alpine-slim
+    ports:
+      - target: 9999
+        published: 9090
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: ./data/loadbalancer
+        target: /etc/nginx/conf.d
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:

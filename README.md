@@ -30,17 +30,17 @@ $ docker buildx build --tag <repository>/<name>:<tag> .
 ```
 $ docker run \
   --detach \
-  --publish published=9090,target=8080 \
-  --name goweb \
+  --publish published=8080,target=8888 \
+  --name responder \
   <repository>/<name>:<tag>
 ```
 
 - test
 ```
-$ curl http://<private_subnet_ip_address>:9090/Hello%20there\!
+$ curl http://<private_subnet_ip_address>:8080/Hello%20there\!
 This is <hostname> running on linux/amd64 saying: Hello there!
 ```
-**NOTE**: the published port (`9090`) is different from the listening port (`8080`)
+**NOTE**: the published port (`8080`) is different from the listening port (`8888`)
 
 ### Run with Docker Swarm
 <img src="assets/images/docker-swarm.png">
@@ -49,14 +49,14 @@ This is <hostname> running on linux/amd64 saying: Hello there!
 ```
 $ docker service create \
   --replicas 3 \
-  --name goweb \
-  --publish published=8888,target=8080 \
+  --name responder \
+  --publish published=8080,target=8888 \
   <repository>/<name>:<tag>
 ```
 
 - test
 ```
-$ curl http://<private_subnet_ip_address>:8888/Hello%20there\!
+$ curl http://<private_subnet_ip_address>:8080/Hello%20there\!
 This is <hostname> running on linux/amd64 saying: Hello there!
 ```
 
@@ -72,16 +72,16 @@ $ docker service scale goweb=5
 ```
 $ docker stack deploy \
   --compose-file compose.yaml
-  goweb
+ responder 
 ```
-**NOTE**: what was before stated through the command line is now described in the `docker-compose.yaml` file
+**NOTE**: what was before stated through the command line is now described in the `compose.yaml` file
 
 ----
 
 ### Add a load balancer (`nginx`)
 <img src="assets/images/docker+lb.png">
 
-Take a look and edit as appropriate file `data/loadbalancer/default.conf`. The file defines:</br>
+Take a look and edit as appropriate file `data/loadbalancer/default.conf.ori`. The file defines:</br>
 - `backend`: the servers (private subnet IP addresses) and ports on which the service stack is offered
 - `listen`: the port on which the LB operates (within the container)
 </br>
