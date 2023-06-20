@@ -1,0 +1,38 @@
+services:
+  web:
+    image: carmelo0x99/goweb:multi
+    ports:
+      - target: 8080
+        published: 8888
+        protocol: tcp
+        mode: ingress
+    deploy:
+      mode: replicated
+      replicas: 6
+      placement:
+        constraints:
+          - node.role == worker
+    networks:
+      - backend
+  lb:
+    image: nginx:stable-alpine-slim
+#    image: carmelo0x99/nginx:slim-lb
+    ports:
+      - target: 9999
+        published: 9090
+        protocol: tcp
+        mode: host
+    volumes:
+      - type: bind
+        source: ./data/loadbalancer
+        target: /etc/nginx/conf.d
+    networks:
+      - backend
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == raspi3p.network.mw
+
+networks:
+  frontend:
+  backend:

@@ -1,0 +1,3 @@
+FROM nginx:stable-alpine-slim
+COPY ./data/loadbalancer/default.conf /etc/nginx/conf.d/
+EXPOSE 9090/tcp

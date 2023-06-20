@@ -1,0 +1,24 @@
+services:
+  lb:
+    image: nginx:stable-alpine-slim
+#    image: carmelo0x99/nginx:slim-lb
+    ports:
+      - target: 9999
+        published: 9090
+        protocol: tcp
+        mode: host
+    volumes:
+      - type: bind
+        source: ./data/loadbalancer
+        target: /etc/nginx/conf.d
+    networks:
+      - goweb_backend
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == raspi3p.network.mw
+
+networks:
+  goweb_frontend:
+  goweb_backend:
+    external: true
