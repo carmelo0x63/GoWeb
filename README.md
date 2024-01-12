@@ -7,7 +7,7 @@ The source code describes two functions:
 2. `sayHello()`: returns a message saying `This is <hostname> running on <OS/arch> saying: <received_message>`
 
 ### Local test
-<img src="assets/images/stand-alone.png">
+<img src="assets/images/stand-alone_2.png">
 
 Run as `go run goweb.go`. From a different terminal tab, run the following:
 ```
@@ -18,7 +18,7 @@ This is <hostname> running on linux/amd64 saying: Hello GoWeb!
 ----
 
 ### Build and run as container
-<img src="assets/images/docker-basic.png">
+<img src="assets/images/docker-basic_2.png">
 
 - build
 ```
@@ -43,7 +43,7 @@ This is <hostname> running on linux/amd64 saying: Hello GoWeb!
 **NOTE**: the published port (`8080`) is different from the listening port (`8888`)
 
 ### Run with Docker Swarm
-<img src="assets/images/docker-swarm.png">
+<img src="assets/images/docker-swarm_2.png">
 
 - run
 ```
@@ -79,7 +79,7 @@ $ docker stack deploy \
 ----
 
 ### Add a load balancer (`nginx`)
-<img src="assets/images/docker+lb.png">
+<img src="assets/images/docker+lb_2.png">
 
 Take a look and edit as appropriate file `data/loadbalancer/default.conf.ori`. The file defines:</br>
 - `backend`: the servers (private subnet IP addresses) and ports on which the service stack is offered
