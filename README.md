@@ -3,7 +3,7 @@ A simple HTTP responder, written in Go.
 
 File `goweb.go` contains the code that is to be compiled and run by means of containers.</br>
 The source code describes two functions:
-1. `main()`: listens and servers any HTTP GET requests on port 8080 (`listenPort`)
+1. `main()`: listens and servers any HTTP GET requests on port 8888 (`listenPort`)
 2. `sayHello()`: returns a message saying `This is <hostname> running on <OS/arch> saying: <received_message>`
 
 ### Local test
@@ -11,8 +11,8 @@ The source code describes two functions:
 
 Run as `go run goweb.go`. From a different terminal tab, run the following:
 ```
-$ curl http://127.0.0.1:8080/Hello%20there\!
-This is <hostname> running on linux/amd64 saying: Hello there!
+$ curl http://127.0.0.1:8888/Hello%20GoWeb\!
+This is <hostname> running on linux/amd64 saying: Hello GoWeb!
 ```
 
 ----
@@ -37,8 +37,8 @@ $ docker run \
 
 - test
 ```
-$ curl http://<private_subnet_ip_address>:8080/Hello%20there\!
-This is <hostname> running on linux/amd64 saying: Hello there!
+$ curl http://<private_subnet_ip_address>:8080/Hello%20GoWeb\!
+This is <hostname> running on linux/amd64 saying: Hello GoWeb!
 ```
 **NOTE**: the published port (`8080`) is different from the listening port (`8888`)
 
@@ -56,8 +56,8 @@ $ docker service create \
 
 - test
 ```
-$ curl http://<private_subnet_ip_address>:8080/Hello%20there\!
-This is <hostname> running on linux/amd64 saying: Hello there!
+$ curl http://<private_subnet_ip_address>:8080/Hello%20GoWeb\!
+This is <hostname> running on linux/amd64 saying: Hello GoWeb!
 ```
 
 #### To scale up/down
@@ -98,8 +98,8 @@ docker run \
 
 - test
 ```
-$ curl http://<private_subnet_ip_address>:9090/Hello%20there\!
-This is <hostname> running on linux/amd64 saying: Hello there!
+$ curl http://<private_subnet_ip_address>:9090/Hello%20GoWeb\!
+This is <hostname> running on linux/amd64 saying: Hello GoWeb!
 ```
 
 ----
